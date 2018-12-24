@@ -1,0 +1,17 @@
+{
+  "name": "generator-mikro",
+  "version": "0.0.1",
+  "description": "Microservices App",
+  "files": [
+    "app"
+  ],
+  "author": "Kaushik Sundar",
+  "keywords": [
+    "yeoman-generator",
+    "microservices",
+    "mikro"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^3.2.0"
+  }
+}

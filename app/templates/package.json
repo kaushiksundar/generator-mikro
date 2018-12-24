@@ -1,0 +1,12 @@
+{
+    "name": "microservice-1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "boot": "./boot.sh"
+    },
+    "author": "Kaushik Sundar",
+    "license": "MIT"
+  }
+  

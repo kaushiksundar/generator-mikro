@@ -5,11 +5,17 @@
   "files": [
     "app"
   ],
+  "license": "MIT",
   "author": "Kaushik Sundar",
   "keywords": [
     "yeoman-generator",
     "microservices",
-    "mikro"
+    "mikro",
+    "docker",
+    "docker-compose",
+    "container",
+    "scaffold",
+    "API Gateway"
   ],
   "dependencies": {
     "yeoman-generator": "^3.2.0"

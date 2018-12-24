@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./gateway:/usr/src/app
+    networks:
+      - app-network
+    links:
+      - microservice_1
+
+  microservice_1:
+    build:
+      context: ./microservice_1
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./microservice_1:/usr/src/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

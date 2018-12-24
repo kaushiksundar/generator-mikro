@@ -27,8 +27,12 @@ module.exports = class extends Generator {
         this.destinationPath('package.json')
       );
       this.fs.copyTpl(
-        this.templatePath('boot.sh'),
-        this.destinationPath('boot.sh')
+        this.templatePath('build.sh'),
+        this.destinationPath('build.sh')
+      );
+      this.fs.copyTpl(
+        this.templatePath('docker-compose.yml'),
+        this.destinationPath('docker-compose.yml')
       );
 
 

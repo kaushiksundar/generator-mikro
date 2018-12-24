@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-      "boot": "./boot.sh"
+      "build": "./build.sh",
+      "down": "docker-compose down",
+      "up": "docker-compose up"
     },
     "author": "Kaushik Sundar",
     "license": "MIT"

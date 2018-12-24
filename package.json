@@ -1,6 +1,6 @@
 {
   "name": "generator-mikro",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Microservices App",
   "files": [
     "app"

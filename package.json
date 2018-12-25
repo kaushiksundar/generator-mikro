@@ -3,7 +3,9 @@
   "version": "0.0.3",
   "description": "Microservices App",
   "files": [
-    "app"
+    "app",
+    "add",
+    "gateway"
   ],
   "license": "MIT",
   "author": "Kaushik Sundar",

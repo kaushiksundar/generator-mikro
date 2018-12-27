@@ -30,7 +30,9 @@ module.exports = class extends Generator {
       );
 
       this.destinationRoot("./")
-      this.config.set({"gateways": [gatewayDirectory]});
+      let gatewayConfig = this.config.get("gateways");
+      gatewayConfig ? gatewayConfig.push(gatewayDirectory) : gatewayConfig = [gatewayDirectory]
+      this.config.set({"gateways": gatewayConfig});
       this.config.save();
       
     }

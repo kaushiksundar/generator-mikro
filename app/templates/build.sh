@@ -9,4 +9,4 @@ done
 docker-compose build
 
 # up all the services
-docker-compose up
+docker-compose up -d

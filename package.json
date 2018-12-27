@@ -5,7 +5,8 @@
   "files": [
     "app",
     "add",
-    "gateway"
+    "gateway",
+    "client-app"
   ],
   "license": "MIT",
   "author": "Kaushik Sundar",

@@ -2,7 +2,7 @@ const Generator = require('yeoman-generator');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    this.projectDir = opts.projectDir || "./";
+    this.projectDirectory = opts.projectDirectory || "./";
   }
   async start() {
     let answers = await this.prompt([
@@ -18,9 +18,6 @@ module.exports = class extends Generator {
         choices: [{
           name: 'NodeJS',
           value: 'nodeJS'
-        },{
-          name: 'Python',
-          value: 'python'
         }]
       }
     ]);
@@ -32,37 +29,35 @@ module.exports = class extends Generator {
     }
 
     if(answers.language == "nodeJS") {
-      this.destinationRoot(answers.name);
       
       this.fs.copyTpl(
           this.templatePath('microservice/package.json'),
-          this.destinationPath('package.json'),
+          this.destinationPath(answers.name+'/package.json'),
           {name: answers.name}
       );
 
       this.fs.copyTpl(
           this.templatePath('microservice/Dockerfile'),
-          this.destinationPath('Dockerfile'),
+          this.destinationPath(answers.name+'/Dockerfile'),
           {name: answers.name}
       );
 
-      this.destinationRoot("src");
-
       this.fs.copyTpl(
           this.templatePath('microservice/src/index.js'),
-          this.destinationPath('index.js'),
+          this.destinationPath(answers.name+'/src/index.js'),
           {name: answers.name}
       );
 
       this.fs.copyTpl(
           this.templatePath('microservice/src/config.js'),
-          this.destinationPath('config.js'),
+          this.destinationPath(answers.name+'/src/config.js'),
           {name: answers.name}
       );
     }
-    else if(answers.language == "python"){
-      this.log("Python service is under construction");  
-    }
+
+    this.destinationRoot("./")
+      this.config.set({"microservices": [answers.name]});
+      this.config.save();
     
   }
 };

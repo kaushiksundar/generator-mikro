@@ -1,24 +1,40 @@
 const Generator = require('yeoman-generator');
+const path = require('path');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    this.projectDirectory = opts.projectDirectory || "./";
+    // this.projectDirectory = opts.projectDirectory || "./";
   }
-  start() {
+  async start() {
     
-    this.destinationRoot(this.projectDirectory);
-    // Add README file
+    let answers = await this.prompt([
+      {
+        type    : 'confirm',
+        name    : 'createGateway',
+        message : 'Do you want to create a gateway: '
+      }]);
+      
+    if(answers.createGateway) {
+      let result = await this.prompt([
+        {
+          type    : 'input',
+          name    : 'name',
+          message : 'Enter a name for the Gateway (default: gateway): '
+        }]);
 
-    
-    if(true) {
-      const GATEWAY_DIRECTORY = "gateway";
+      let gatewayDirectory = result.name == "" ? "gateway": result.name;
+      
       this.fs.copy(
         this.templatePath('gateway'),
-        this.destinationPath(GATEWAY_DIRECTORY+'/')
+        this.destinationPath(gatewayDirectory+'/')
       );
-      this.config.set({"gateways": ["gateway"]});
+
+      this.destinationRoot("./")
+      this.config.set({"gateways": [gatewayDirectory]});
       this.config.save();
+      
     }
+   
   } // Start method
 
 };

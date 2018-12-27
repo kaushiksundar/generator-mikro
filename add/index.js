@@ -56,8 +56,10 @@ module.exports = class extends Generator {
     }
 
     this.destinationRoot("./")
-      this.config.set({"microservices": [answers.name]});
-      this.config.save();
+    let microservicesConfig = this.config.get("microservices");
+    microservicesConfig ? microservicesConfig.push(answers.name) : microservicesConfig = [answers.name]
+    this.config.set({"microservices": microservicesConfig });
+    this.config.save();
     
   }
 };

@@ -39,7 +39,9 @@ module.exports = class extends Generator {
         );
 
         this.destinationRoot("./")
-        this.config.set({"client-apps": [result.name]});
+        let clientAppsConfig = this.config.get("client-apps");
+        clientAppsConfig ? clientAppsConfig.push(result.name) : clientAppsConfig = [result.name]
+        this.config.set({"client-apps": clientAppsConfig });
         this.config.save();
     }
     

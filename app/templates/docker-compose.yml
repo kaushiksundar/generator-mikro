@@ -25,6 +25,17 @@ services:
       - ./microservice_1:/usr/src/app
     networks:
       - app-network
+  
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./web:/usr/src/app
+    networks:
+      - app-network
 
 networks:
   app-network:

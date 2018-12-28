@@ -23,18 +23,57 @@ module.exports = class extends Generator {
                 type    : 'input',
                 name    : 'name',
                 message : 'Enter a name for the Client App (i.e.: web): '
-            }
+            },
+            {
+                type    : 'list',
+                name    : 'tech',
+                message : 'Choose Technology: ',
+                choices: [{
+                  name: 'Node/Express - Custom',
+                  value: 'custom'
+                }, {
+                    name: 'ReactJS',
+                    value: 'react'
+                }, {
+                    name: "VueJS",
+                    value: "vue"
+                }]
+              }
         ]);
          
         // create destination folder
         if(result.name == "") {
-            result.name = "web-client-app"
+            result.name = "web"
         }
         
-        // this.destinationRoot(this.projectDirectory+"/"+result.name);
+    
         this.fs.copyTpl(
-            this.templatePath('package.json'),
+            this.templatePath('custom/package.json'),
             this.destinationPath(result.name+'/package.json'),
+            {name: result.name}
+        );
+
+        this.fs.copyTpl(
+            this.templatePath('custom/Dockerfile'),
+            this.destinationPath(result.name+'/Dockerfile'),
+            {name: result.name}
+        );
+
+        this.fs.copyTpl(
+            this.templatePath('custom/public/index.html'),
+            this.destinationPath(result.name+'/public/index.html'),
+            {name: result.name}
+        );
+
+        this.fs.copyTpl(
+            this.templatePath('custom/config.js'),
+            this.destinationPath(result.name+'/config.js'),
+            {name: result.name}
+        );
+
+        this.fs.copyTpl(
+            this.templatePath('custom/index.js'),
+            this.destinationPath(result.name+'/index.js'),
             {name: result.name}
         );
 

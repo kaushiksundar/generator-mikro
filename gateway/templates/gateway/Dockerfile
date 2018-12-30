@@ -11,7 +11,9 @@ RUN npm i -g nodemon
 ENV NODE_ENV=development
 ENV PORT=8000
 
-ENV MICROSERVICE_1=http://microservice_1:3000
+<% services.forEach((service) => { %>
+ENV <%= service.toUpperCase() %>=http://<%= service %>:3000
+<% }) %>
 
 EXPOSE 8000
 

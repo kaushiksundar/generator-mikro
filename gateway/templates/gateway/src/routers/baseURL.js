@@ -9,5 +9,7 @@ environmentVariables.forEach((name) => {
 });
 
 module.exports = {
-  MICROSERVICE_1: process.env.MICROSERVICE_1
+<% services.forEach((service) => { %>
+  <%= service.toUpperCase() %>: process.env.<%= service.toUpperCase() %>,
+<% }) %>
 };

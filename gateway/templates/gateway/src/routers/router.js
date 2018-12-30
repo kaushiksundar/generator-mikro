@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router()
-var schoolRouter = require('./microservice1Router')
+
+<% services.forEach((service) => { %>
+var <%= service %>Router = require('./<%= service %>Router');
+<% }) %>
 
 
 router.use((req, res, next) => {
@@ -8,6 +11,8 @@ router.use((req, res, next) => {
     next()
 })
 
-router.use(schoolRouter);
+<% services.forEach((service) => { %>
+router.use(<%= service %>Router);
+<% }) %>
 
 module.exports = router

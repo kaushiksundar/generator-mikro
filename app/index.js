@@ -42,9 +42,9 @@ module.exports = class extends Generator {
 
     this.destinationRoot("./")
     
-    this.composeWith(require.resolve('../gateway'), {projectDirectory: answers.name});
     this.composeWith(require.resolve('../add'), {projectDirectory: answers.name});
     this.composeWith(require.resolve('../client-app'), {projectDirectory: answers.name});
+    this.composeWith(require.resolve('../gateway'), {projectDirectory: answers.name});
 
     this.config.set({"mikro-generator-version": "0.0.4"});
     this.config.save();

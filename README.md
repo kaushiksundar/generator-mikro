@@ -2,6 +2,8 @@
 
 A yoeman generator for a microservices projects
 
+**Note: ** The project is under active development, releases are unstable
+
 ## Features
 
 - Generate NodeJS microservice. More language support in the future
